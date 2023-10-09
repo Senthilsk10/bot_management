@@ -227,4 +227,4 @@ This route displays detailed information about a specific bot and allows users t
 ---
 
 
-These are the documentation snippets for the important routes in your Flask application, including both HTML rendering routes and routes that perform actions. If you need documentation for additional routes or have specific routes in mind, please let me know.
+These are the documentation snippets for the important routes in the Flask application, including both HTML rendering routes and routes that perform actions.
