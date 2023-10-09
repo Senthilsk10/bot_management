@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block extra_head %}
+    <link rel="stylesheet" href="static/css/index.css">
+{% endblock %}
+{% block content %}
+<main>
+    <div class="bot-category-row">
+        <h2 class="bot-category-title">Bots with Tag: {{ tag }}</h2>
+        <div class="horizontal-scroll bot-cards row-wrap">
+            {% for bot in bots_with_tag %}
+            <div class="bot-card">
+                <a href="/view_bot/{{ bot.id }}">
+                    <div class="screenshot">
+                        {% if bot.screenshot1_url %}
+                        <img src="{{ bot.screenshot1_url }}" alt="{{ bot.name }}">
+                        {% else %}
+                        <img src="/static/default_image.png" alt="{{ bot.name }}">
+                        {% endif %}
+                    </div>
+                    <div class="details">
+                        <div class="details-left">
+                            <!-- Bot logo -->
+                            <img src="{{ bot.photo_url }}" alt="{{ bot.name }}" class="bot-logo">
+                        </div>
+                        <div class="details-right">
+                            <h2 class="bot-name">{{ bot.name }}</h2>
+                            <p class="bot-category">{{ bot.category }}</p>
+                            <div class="bot-status">
+                                
+                                {% if bot.active %}
+                                <img src="{{ url_for('static', filename='logo/active.png') }}" alt="Active">
+                                {% else %}
+                                <img src="{{ url_for('static', filename='logo/inactive.png') }}" alt="Inactive">
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f7ff; 
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            width: 80%; /* Adjust this width for desktop */
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #007bff; /* Thick border line */
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Drop shadow */
+            background-color: #fff; /* Form background color */
+        }
+
+        .form-group {
+            margin-bottom: 20px; /* Increased spacing between form groups */
+            margin-right: 20px;
+        }
+
+        .form-label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px; /* Added margin below labels */
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .custom-control-label {
+            padding-top: 2px; /* Adjust vertical alignment of the label */
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        /* Media Query for Mobile */
+        @media (max-width: 767px) {
+            form {
+                width: 90%; /* Adjust this width for mobile */
+            }
+        }
+
+        /* Media Query for Desktop */
+        @media (min-width: 768px) {
+            form {
+                width: 50%; /* Adjust this width for desktop */
+            }
+        }
+
+        /* CSS for desktop */
+        @media (min-width: 768px) {
+            .static-text {
+                white-space: nowrap; /* Prevent text from wrapping */
+                overflow: auto; /* Add a scrollbar if necessary */
+                max-width: 100%; /* Allow it to take the full available width */
+            }
+        }
+
+        /* CSS for mobile */
+        @media (max-width: 767px) {
+            .static-text {
+                white-space: normal; /* Allow text to wrap on mobile */
+                overflow: hidden; /* Hide overflow on mobile */
+            }
+        }
+    </style>
+    <title>Add Bot</title>
+</head>
+<body>
+    <h1>Enter Bot Details</h1>
+    <form action="/add_bot" method="POST" enctype="multipart/form-data">
+        <!-- Include the CSRF token for security -->
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            <label for="name" class="form-label">Name:</label>
+            {{ form.name(class="form-control", placeholder="Bot Name") }}
+        </div>
+
+        <div class="form-group">
+            <label for="description" class="form-label">Description:</label>
+            {{ form.description(class="form-control", placeholder="Bot Description") }}
+        </div>
+
+        <div class="form-group">
+            <label for="details" class="form-label">Functions and features:</label>
+            <div class="static-text">
+                {{ form.details(class="form-control", id="details", placeholder="Bot Details") }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="links" class="form-label">Links:</label>
+            {{ form.links(class="form-control", placeholder="Bot Links") }}
+        </div>
+
+        <div class="form-group">
+            <label for="youtube_demo_link" class="form-label">Youtube Demo Link:</label>
+            {{ form.youtube_demo_link(class="form-control", placeholder="Place Youtube Demo Link") }}
+        </div>
+
+        <div class="form-group">
+            <label for="photo" class="form-label">Logo:</label>
+            {{ form.photo(class="form-control-file") }}
+        </div>
+
+        <div class="form-group">
+            <label for="screenshot1_url" class="form-label">Screenshot 1 URL:</label>
+            {{ form.screenshot1_url(class="form-control", placeholder="Screenshot 1 URL") }}
+        </div>
+
+        <div class="form-group">
+            <label for="screenshot2_url" class="form-label">Screenshot 2 URL:</label>
+            {{ form.screenshot2_url(class="form-control", placeholder="Screenshot 2 URL") }}
+        </div>
+
+        <div class="form-group">
+            <label for="screenshot3_url" class="form-label">Screenshot 3 URL:</label>
+            {{ form.screenshot3_url(class="form-control", placeholder="Screenshot 3 URL") }}
+        </div>
+
+        <div class="form-group">
+            <label for="screenshot4_url" class="form-label">Screenshot 4 URL:</label>
+            {{ form.screenshot4_url(class="form-control", placeholder="Screenshot 4 URL") }}
+        </div>
+
+        <div class="form-group">
+            <label for="screenshot5_url" class="form-label">Screenshot 5 URL:</label>
+            {{ form.screenshot5_url(class="form-control", placeholder="Screenshot 5 URL") }}
+        </div>
+
+        <div class="form-group">
+            <label for="category" class="form-label">Category:</label>
+            {{ form.category(class="form-control") }}
+        </div>
+
+        <div class="form-group">
+            <label for="tags" class="form-label">Tags:</label>
+            {{ form.tags(class="form-control", placeholder="Tags") }}
+        </div>
+
+        <div class="form-group">
+            <label for="active" class="form-label">Active:</label>
+            <div class="custom-control custom-switch">
+                {{ form.active(class="custom-control-input", id="toggle-active") }}
+                <label class="custom-control-label" for="toggle-active"></label>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <button type="submit" class="btn btn-primary">Add Bot</button>
+        </div>
+    </form>
+</body>
+</html>

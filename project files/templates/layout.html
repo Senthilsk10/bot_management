@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bot manager</title>
+  <link rel="icon" type="image/png" href="static/logo/fox.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  {% block extra_head %}{% endblock %}
+    
+  <link rel="stylesheet" href="/static/css/layout.css">
+  
+  <style>
+* {margin: 0;padding: 0;box-sizing: border-box;}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="left">
+      <img src="{{ url_for('static', filename='logo/download.png') }}" alt="Bot Store Logo">
+      <h3>bot manager</h3>
+    </div>
+    <div class="right">
+      <div class="admin-icon">
+          <a href="/admin" class="admin-button"><img src="/static/logo/protection.png" style="height: 45px;width: 45px;"></img></a>
+      </div>
+    </div>
+  </header>
+   <div class="marq">
+    <div class="cat-wrap">
+    <a class="cat" href="/">All bots</a>
+    <a class="cat" href="/?category=Entertainment">Entertainment</a>
+    <a class="cat" href="/?category=Productivity">Productivity</a>
+    <a class="cat" href="/?category=Lifestyle">Lifestyle</a>
+    <a class="cat" href="/?category=News%20%26%20Information">News & Information</a>
+</div>
+
+    
+    <div class="search">
+      <form action="/search" method="get" class="search-form">
+        <input type="text" name="search" placeholder="Search bots" value="{{ search_query }}" class="search-inp">
+      </form>
+    </div>
+</div>
+    {% block search_results %}{% endblock %}
+    {% block content %}{% endblock %}
+  <footer>
+    <div class="footer-basic">
+      <div class="social">
+          <a href="#"><i class="icon ion-social-instagram"></i></a>
+          <a href="#"><i class="icon ion-social-snapchat"></i></a>
+          <a href="#"><i class="icon ion-social-twitter"></i></a>
+          <a href="#"><i class="icon ion-social-facebook"></i></a>
+      </div>
+      <ul class="list-inline">
+          <li class="list-inline-item"><a href="/">Explore</a></li>
+          <li class="list-inline-item"><a href="/about">About</a></li>
+          <li class="list-inline-item"><a href="/admin">Admin</a></li>
+          <li class="list-inline-item"><a href="/contact">Contact</a></li>
+      </ul>
+      <p class="copyright">Company Name © 2018</p>
+    </div>
+  </footer>
+</body>
+</html>

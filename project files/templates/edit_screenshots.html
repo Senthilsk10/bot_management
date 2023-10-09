@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Screenshots</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+       
+        body {
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .screenshot-list li {
+            margin: 10px 0;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .screenshot-list img {
+            max-width: 50%;
+            height: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        /* Style for input fields */
+        .custom-file-input::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+
+        .custom-file-input::before {
+            content: 'Choose File';
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        .custom-file-input:hover::before {
+            background-color: #0056b3;
+        }
+
+        .custom-file-input:active::before {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Edit Screenshots for {{ bot.name }}</h1>
+
+        <!-- Display existing screenshots -->
+        <div class="existing-screenshots">
+            <h2>Existing Screenshots</h2>
+            <ul class="list-unstyled screenshot-list">
+              {% for i in range(1, 6) %}
+        {% with screenshot_url=bot['screenshot' + i|string + '_url'] %}
+            <li>
+                {% if screenshot_url %}
+                    <img src="{{ screenshot_url }}" alt="Screenshot {{ i }}">
+                    <form action="{{ url_for('edit_screenshots', bot_id=bot.id) }}" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="screenshot_number" value="{{ i }}">
+                        <input type="file" name="screenshot{{ i }}_file" accept="image/*">
+                        <button type="submit">Update</button>
+                        <a href="{{ url_for('delete_screenshot', bot_id=bot.id, screenshot_number=i) }}">Delete</a>
+                    </form>
+                {% else %}
+                    <form action="{{ url_for('edit_screenshots', bot_id=bot.id) }}" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="screenshot_number" value="{{ i }}">
+                        <input type="file" name="screenshot{{ i }}_file" accept="image/*">
+                        <button type="submit">Add Screenshot</button>
+                    </form>
+                {% endif %}
+            </li>
+        {% endwith %}
+    {% endfor %}  
+            </ul>
+        </div>
+
+        <a href="{{ url_for('edit_bot', bot_id=bot.id) }}" class="btn btn-primary mt-4">Back to Bot Edit</a>
+    </div>
+
+   
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap">
+    <style>
+        body {
+            background-color: white;
+            font-family: 'Ubuntu', sans-serif;
+            color: blue;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            min-height: calc(100vh - 80px);
+            padding: 16px 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        sup {
+            color: red;
+        }
+
+        input, textarea {
+            width: 80%;
+            padding: 10px 16px;
+            border: 1px solid grey;
+            border-radius: 10px;
+        }
+
+        .btn {
+            width: max-content;
+            padding: 10px 32px;
+            background-color: rgb(24, 24, 248);
+            color: white;
+            cursor: pointer;
+        }
+
+        .submit-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1, .submit-div {
+            transform: translateX(-16px);
+        }
+
+        form {
+            padding-left: 16px;
+        }
+    </style>
+</head>
+<body>
+  {% extends "layout.html" %}
+
+{% block content %}
+<main class="container" style="min-height: 80vh;">
+    <h1>Contact Us</h1>
+    <form method="POST" action="/contact">
+        <input type="text" id="name" name="name" placeholder="Your Name" required>&nbsp;<sup>*</sup><br><br>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>&nbsp;<sup>*</sup><br><br>
+        <input type="tel" id="ph_no" name="ph_no" placeholder="Your Mobile Number" required>&nbsp;<sup>*</sup><br><br>
+        <textarea id="message" name="message" rows="8" cols="50" placeholder="What's on your mind?" required></textarea>&nbsp;<sup>*</sup><br><br>
+        <div class="submit-div">
+            <input type="submit" value="Submit" class="btn">
+        </div>
+    </form>
+</main>
+  {% endblock %}
+</body>
+</html>

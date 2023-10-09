@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bot List</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/admin.css')}}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>admin dashboard</h1>
+
+         <div class = "bot-count">
+            <p>Total Bots: {{ total_bots }}</p>
+            <p>Total Active Bots: {{ total_active_bots }}</p>
+         </div>
+        <div class="add-bot-button">
+            <a href="{{ url_for('add_bot') }}">+</a>
+            <div class="add-bot-text">Add Bot</div>
+        </div>
+        <div style="clear: both;"></div>
+        <div class="btn-wrapper">
+            <a href="{{ url_for('admin', sort_by='name') }}" class="sort-button">Sort by Name</a>
+            <a href="{{ url_for('admin', sort_by='active') }}" class="sort-button">Sort by Active</a>
+            <form action="{{ url_for('admin') }}" method="GET" class="filter-form">
+                <input type="text" id="searchInput" name="search_query" placeholder="Search...">
+                <button type="submit" class="filter-button">Filter</button>
+            </form>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Logo</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Active</th>
+                    <th class="btn-group">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bot in bots %}
+                    <tr>
+                        <td>
+                            <img src="{{ bot.photo_url }}" alt="{{ bot.name }}" class="logo">
+                        </td>
+                        <td class="name-column">{{ bot.name }}</td>
+                        <td>{{ bot.description }}</td>
+                        <td class="center-text {% if bot.active %}active-status-true{% else %}active-status-false{% endif %}">
+                            {% if bot.active %}Active{% else %}Inactive{% endif %}
+                        </td>
+                        <td class="btn-group">
+                            <a href="{{ url_for('edit_bot', bot_id=bot.id) }}">Edit</a>
+                            <a href="{{ url_for('delete_bot', bot_id=bot.id) }}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="alert warning">
+            Changes made here will be reflected on the <a href="{{url_for('index')}}">main page</a>.
+        </div>
+    </div>
+
+  <div class="-contact-container">
+    <h1>Contact Form Responses</h1>
+
+    {% if message %}
+        {% for contact in message %}
+            <div class="contact-responses">
+                <button class="accordion">View Contact form response of {{contact.name}}</button>
+                <div class="panel">
+                    <p><strong>Name:</strong> {{ contact.name }}</p>
+                    <p><strong>Phone Number:</strong> {{ contact.phno }}</p>
+                    <p><strong>Email:</strong> {{ contact.email }}</p>
+                    <p><strong>Message:</strong> {{ contact.message }}</p>
+                    {% if not contact.read %}
+                        <form action="{{ url_for('mark_as_read', contact_id=contact.id) }}" method="post">
+                            <button type="submit" class="btn btn-primary">Mark as Read</button>
+                        </form>
+                    {% endif %}
+                    <form action="{{ url_for('delete_contact', contact_id=contact.id) }}" method="post">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No contact details available.</p>
+    {% endif %}
+</div>
+
+    <!-- Display Bots and Feedback -->
+    <h1>Feedback responses</h1> <!-- Add a title -->
+        <p style="text-align: center;">Here, you can view and delete feedback entries.</p> <!-- Add a message for the admin -->
+
+    <div class="container">
+        {% if feedbacks %}
+            {% set current_bot = None %}
+            {% for feedback_entry in feedbacks|sort(attribute='bot_name') %}
+                {% if feedback_entry.bot_name != current_bot %}
+                    <div class="name-container">
+                        <h2 class="bot-name">Bot: {{ feedback_entry.bot_name }}</h2>
+                    </div>
+                {% endif %}
+                <div class="feedback-item">
+                    <div class="name-container">
+                        <p class="user-name">User: {{ feedback_entry.user_name }}</p>
+                    </div>
+                    <p class="feedback">{{ feedback_entry.feedback }}</p>
+                    <form method="POST" action="/delete_feedback/{{ feedback_entry.id }}">
+                        <button class="delete-button" type="submit">Delete Feedback</button>
+                    </form>
+                </div>
+                {% set current_bot = feedback_entry.bot_name %}
+            {% endfor %}
+        {% else %}
+            <p>No feedback available.</p>
+        {% endif %}
+    </div>
+
+
+    <script src="{{url_for('static', filename='js/admin.js')}}"></script>
+
+</body>
+</html>

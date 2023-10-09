@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bot.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+{% endblock %}
+
+
+{% block content %}
+     <div class="container">
+        <div class="logo">
+            <img src="{{ bot.photo_url }}" alt="Bot Logo">
+        </div>
+        <div class="bot-info">
+            <h1>{{ bot.name }}</h1>
+            <p>{{ bot.category }}</p>
+            <p>{{ bot.description }}</p>
+            <div class="tags">
+                {% for tag in bot.tags.split(',') %}
+                  {% set encoded_tag = tag | urlencode %}
+                  <a class="tag" href="/tagview?tag={{ encoded_tag }}">{{ tag }}</a>
+                {% endfor %}
+            <br>
+                
+               
+            </div>
+            <a href="{{bot.links}}" class="install">Visit Bot</a>
+        </div>
+    </div>
+
+    <div class="center-la">
+          <div class="image-carousel">
+        <!-- Check for YouTube link and display it if available -->
+        {% if bot.youtube_link %}
+            <iframe width="100%" height="300" src="{{ bot.youtube_demo_link }}"></iframe>
+        {% endif %}
+        
+        {% for screenshot_url in [bot.screenshot1_url, bot.screenshot2_url, bot.screenshot3_url, bot.screenshot4_url, bot.screenshot5_url] %}
+            {% if screenshot_url %}
+                <img src="{{ screenshot_url }}" alt="Screenshot">
+            {% endif %}
+        {% endfor %}
+      </div>
+          <div class="similar-bots">
+        <h2>Explore Similar Bots</h2>
+        
+        {% for similar_bot in similar_bots %}
+            <div class="bot-card">
+                <div class="logo">
+                  <img src="{{similar_bot.photo_url }}" alt="Bot Logo">
+                </div>
+                <div class="bot-card-info">
+                    <h3>{{ similar_bot.name }}</h3>
+                    <p>{{ similar_bot.category }}</p>
+                    <p><a href  = "/view_bot/{{similar_bot.id}}">Explore Bot Details</a> </p>
+                </div>
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="bot-details">
+        <h2>Bot Details</h2>
+        <p>{{ bot.details }}</p>
+    </div>
+  
+    <div class="fb-responses">
+      <h3>Feedbacks from the users</h3>
+      <ul class="fbs">
+          {% for feedback_entry in feedback_entries %}
+            <div class="fb-div">
+              <li class="fb-username">
+                  <i class="fas fa-user-circle fa-2x"></i><sup><p><strong>{{ feedback_entry.user_name }}</strong></p></sup>
+              </li>
+              <li class="fb-fb">
+                  <p>{{ feedback_entry.feedback }}</p>
+              </li>
+            </div>
+          {% endfor %}
+      </ul>
+    </div>
+</body>
+    <form method="POST" action="/add_feedback" class="feedback">
+      <h2>Share Your Bot Experience</h2>
+        <label for="bot_id" class="hidden">Bot ID (Hidden):</label>
+        <input type="hidden" id="bot_id" name="bot_id" value="{{bot.id}}">
+        
+        
+        <input type="text" id="user_name" name="user_name" required placeholder="Username"><br><br>
+        
+        
+        <textarea id="feedback" name="feedback" rows="4" cols="50" required placeholder="Feedback..."></textarea><br><br>
+        
+        <input type="submit" value="Submit Feedback">
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,294 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container, .-contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .btn-group {
+            text-align: left; /* Align buttons to the left */
+        }
+        .btn-group a {
+            text-decoration: none;
+            margin: 5px;
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border-radius: 5px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-group a:hover {
+            background-color: #0056b3; /* Change color on hover */
+        }
+        .btn-group .sort-button {
+            background-color: #555;
+            border: 1px solid #444;
+        }
+        .btn-group .filter-button {
+            background-color: #777;
+            border: 1px solid #666;
+        }
+        .add-bot-button {
+            text-align: left;
+        }
+        .add-bot-button a {
+            display: inline-block;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50%; /* Make it round */
+            width: 40px;
+            height: 40px;
+            line-height: 40px; /* Vertically center the plus symbol */
+            text-align: center;
+            font-size: 24px;
+            margin-right: 10px;
+            float: left; /* Float the button to the left */
+        }
+        .add-bot-text {
+            line-height: 40px; /* Vertically center the text */
+            float: left; /* Float the text to the left */
+        }
+        /* Style for the search input */
+#searchInput {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+    .filter-form{
+      display: inline-block;
+      margin-left: 50px;
+    }
+      
+
+/* Style for the sort and filter buttons */
+.sort-button, .filter-button {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sort-button:hover, .filter-button:hover {
+    background-color: #0056b3;
+}
+
+        img.logo {
+            max-height: 40px;
+            max-width: 40px;
+            margin-right: 10px;
+            float: left;
+            border-radius: 50%;
+        }
+        .name-column {
+            vertical-align: middle; /* Vertically center the name within the row */
+        }
+        .center-text {
+            text-align: center;
+        }
+        .active-status-true {
+            color: green;
+        }
+        .active-status-false {
+            color: red;
+        }
+        .btn-wrapper {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .btn-wrapper button {
+            margin: 5px;
+        }
+        .alert {
+            background-color: #f44336;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .warning {
+            background-color: #ff9800;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* Media Query for Mobile Devices */
+        @media screen and (max-width: 600px) {
+            table {
+                border: 0;
+            }
+            table thead {
+                display: none;
+            }
+            table tr {
+                margin-bottom: 10px;
+                display: block;
+                border: 1px solid #ddd;
+            }
+            table td {
+                border-bottom: 1px solid #ddd;
+                display: block;
+                text-align: left;
+            }
+            .btn-group {
+                text-align: center;
+                margin-top: 10px;
+            }
+            .btn-group a {
+                margin: 5px 0; /* Adjust margin for better spacing */
+            }
+        }
+        /* Style for the contact form responses section */
+.contact-container {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    max-width: 100%; /* Adjust to match the table width */
+    overflow-x: auto; /* Add horizontal scroll if content exceeds the width */
+}
+
+h1 {
+    text-align: center;
+}
+
+.contact-responses {
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.contact-responses p {
+    margin: 5px 0;
+}
+
+.accordion {
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    text-align: left;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.panel {
+    display: none;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Style the "Mark as Read" and "Delete" buttons within each contact response */
+.btn-primary {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.bot-count {
+    margin-top: 20px; /* Adjust as needed for the desired gap */
+    margin-left: auto; /* Move it to the right by setting left margin to auto */
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    float: right; /* Float the container to the right */
+}
+ /* Center the container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            padding-left: 20px; /* Add padding to align content to the right */
+        }
+
+        /* Style for bot name and user name container */
+        .name-container {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        /* Style for bot name */
+        .bot-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 10px; /* Add margin for separation */
+        }
+
+        /* Style for user name */
+        .user-name {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Style for feedback */
+        .feedback {
+            margin-bottom: 10px;
+        }
+
+        /* Style for delete button */
+        .delete-button {
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        /* Add some spacing */
+        .feedback-item {
+            margin-top: 10px;
+            border-bottom: 1px solid #ccc; /* Add a horizontal line between feedback items */
+            padding-bottom: 10px; /* Add some space between the line and the content */
+        }
