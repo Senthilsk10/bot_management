@@ -1,5 +1,5 @@
 # bot_management
-bot managment webapp using flask with admin controlled data of bots details with design similar playstore
+bot managment webapp using flask with admin controlled data of bots details with design similar to  playstore UI.
 
 
 
@@ -228,3 +228,13 @@ This route displays detailed information about a specific bot and allows users t
 
 
 These are the documentation snippets for the important routes in the Flask application, including both HTML rendering routes and routes that perform actions.
+
+
+UI - screenshot links
+
+LAYOUT - without bots
+link - https://app.tango.us/app/workflow/Navigating-the-Bot-Manager--Finding-Bots-and-Categories-aafa9e5d89d9417b8cda6094ae15868c
+
+whole website - with bots
+
+link - https://app.tango.us/app/workflow/Managing-Bots--Games--Technology--Food---Recipes--Entertainment--Lifestyle--and-more-801f6fe138e54d02beffafa23fcef84e
