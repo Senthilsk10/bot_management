@@ -1,8 +1,73 @@
 # bot_management
 bot managment webapp using flask with admin controlled data of bots details with design similar to  playstore UI.
 
+## Overview
+
+The **Bot Management System** is a web-based application that allows administrators to add, edit, and manage bot data easily. Users of the website can access various pages, including the home, bots, and contact pages. The home page displays general information, while the bots page lists all available bots with details such as their names, descriptions, functions, features, demo videos, and active status.
+
+## Features
+
+### Admin Panel
+
+- **Add Bots**: Administrators can add new bots to the system by providing details like name, description, functions, features, demo video links, and setting their active status.
+- **Edit Bots**: Admins can edit the information of existing bots, including updating details and changing their active status.
+- **Manage Bot Data**: Easy-to-use forms and interfaces make it simple to manage bot data efficiently.
+  
+### User-Friendly Website
+
+- **Home Page**: Displays general information or content that is relevant to your project.
+- **Bots Page**: Lists all available bots, providing users with essential information about each bot, including its name, description, functions, features, and demo video. Users can also see the active status of each bot.
+- **Contact Page**: Allows users to get in touch with you or your team, providing a way for them to reach out for inquiries or support.
 
 
+ Here's an explanation of each field and the YouTube link note in the add bot page:
+
+1. **Name:** This field is where you should enter the name of your bot. This could be the bot's official name or a nickname.
+
+2. **Description:** In this field, provide a brief description of your bot. Describe what your bot does or its purpose.
+
+3. **Functions and Features:** Use this field to provide more detailed information about your bot's functions and features. You can describe what tasks your bot can perform and any special capabilities it has.
+
+4. **Links:** Enter any relevant links associated with your bot. This could include links to the bot's telegram link.
+
+5. **YouTube Demo Link (Embedded):** For this field, you should provide the YouTube demo link for your bot. However, it's important to note that this should be an embedded YouTube link. To get an embedded link, follow these steps:
+
+   - Go to the YouTube video you want to embed.
+   - Click on the "Share" button below the video.
+   - Click on the "Embed" option.
+   - Copy the generated embed code and paste it in this field.(dont copy whole code only copy the link)
+   - eg-https://www.youtube.com/embed/rvSaWYqFC44?si=Nv4wNyuZCs7fio5P" (valid)
+   - https://youtu.be/rvSaWYqFC44?si=LC3xEk94GcgCFkuj (not valid)
+
+6. **Logo (Photo):** This is where you should upload your bot's logo or image. Click on the "Choose File" button to select an image file from your device.
+
+7. **Active:** Check this box if your bot is currently active and operational.
+
+8. **Add Bot Button:** After filling out the required information, click this button to add your bot to the database.
+
+Remember to ensure that the information you provide in the form accurately represents your bot. Users who visit your site will rely on this information to learn more about your bot's capabilities and purpose.
+
+
+
+you can see the screenshots of the website here - https://app.tango.us/app/workflow/Navigating-the-Admin-Dashboard-7eb0936fa5764b1b8ca67a81a165a92d
+
+
+
+## Frontend Development Help
+
+A big shoutout and heartfelt thanks to https://github.com/sharunashwanth for their fantastic work on the frontend development of this project! 🚀
+
+### sharunashwanth Accomplished:
+
+- Implemented a stunning and user-friendly interface.
+- Enhanced the overall user experience.
+- Crafted beautiful designs and layouts.
+- Resolved numerous frontend issues and optimizations.
+
+
+
+
+### url routes
 ### Route: /admin_login
 
 **Description:**
