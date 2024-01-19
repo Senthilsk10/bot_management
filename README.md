@@ -49,9 +49,6 @@ Remember to ensure that the information you provide in the form accurately repre
 
 
 
-you can see the screenshots of the website here - https://app.tango.us/app/workflow/Navigating-the-Admin-Dashboard-7eb0936fa5764b1b8ca67a81a165a92d
-
-
 
 ## Frontend Development Help
 
